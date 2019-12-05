@@ -2,7 +2,7 @@
 # DO Community Playbooks: LEMP on Ubuntu 18.04
 ##################################################
 ---
-- hosts: all
+- hosts: localhost
   become: true
   vars_files:
     - vars/default.yml

@@ -41,10 +41,6 @@
         name: mysql    
         state: started
 
-    - name: pause after MySQL restart
-      pause: "seconds=5"
-      when: mysql_service.changed
-      
     - name: Sets the root password 
       mysql_user: 
         name: root 

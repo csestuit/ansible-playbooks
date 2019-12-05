@@ -29,7 +29,7 @@
       apt: update_cache=yes name=docker-ce state=latest
 
     - name: Install Docker Module for Python
-      pip:
+      pip3:
         name: docker
 
     - name: Pull default Docker image

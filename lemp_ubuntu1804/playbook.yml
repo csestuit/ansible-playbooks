@@ -36,6 +36,15 @@
       notify: Reload Nginx
 
 # MySQL Configuration
+
+    - name: restart MySQL
+      service: "name={{ mysql_daemon }} state=restarted"
+      register: mysql_service
+
+    - name: pause after MySQL restart
+      pause: "seconds=5"
+      when: mysql_service.changed
+      
     - name: Sets the root password 
       mysql_user: 
         name: root 
@@ -56,13 +65,6 @@
         state: absent
         login_user: root
         login_password: "{{ mysql_root_password }}"
-
-# UFW Configuration
-    - name: "UFW - Allow HTTP on port {{ http_port }}"
-      ufw:
-        rule: allow
-        port: "{{ http_port }}"
-        proto: tcp
 
 # Sets Up PHP Info Page
     - name: Sets Up PHP Info Page

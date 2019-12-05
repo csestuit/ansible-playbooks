@@ -36,7 +36,6 @@
       notify: Reload Nginx
 
 # MySQL Configuration
-
     - name: restart MySQL
       service: "name={{ mysql_daemon }} state=restarted"
       register: mysql_service

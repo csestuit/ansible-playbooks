@@ -2,7 +2,7 @@
 # DO Community Playbooks: Docker
 #################################################
 ---
-- hosts: localhost
+- hosts: all
   become: true
   vars_files:
     - vars/default.yml
@@ -13,7 +13,7 @@
 
     - name: Install required system packages
       apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'apt-transport-https', 'python3', 'gcc', 'python3-dev', 'file', 'autoconf', 'automake', 'musl-dev', 'libffi-dev', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
 
     - name: Add Docker GPG apt Key
       apt_key:
@@ -27,6 +27,10 @@
 
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
+
+    - name: Install Docker Module for Python
+      pip:
+        name: docker
 
     - name: Pull default Docker image
       docker_image:

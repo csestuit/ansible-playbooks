@@ -1,5 +1,5 @@
 ---
 mysql_root_password: "test1"
-http_host: "emea.hpqcorp.net"
-http_conf: "emea.hpqcorp.net.conf"
+http_host: "localhost"
+http_conf: "localhost.conf"
 http_port: "80"
